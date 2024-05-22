@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+i{
+    cursor: pointer;
+}
+aside{
+    width: 350px;
+    height: 100vh;
+    min-height: 700px;
+    background-color: blue;
+    color: white;
+    padding: 20px;
+    transform: translateX(-82%);
+    transition: all .5s;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+.side-head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.side-head>h3{
+    font-size: 30px;
+}
+.side-head>i{
+    font-size: 30px;
+}
+.side-body>ul{
+list-style: none;
+}
+.side-body>ul>li>span{
+    transform: scaleX(0);
+    transform-origin: left;
+}
+.scale1{
+    transform: scaleX(1);
+}
+.side-body>ul>li{
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    height: 40px;
+}
+.side-body>ul>li>i:hover{
+filter: drop-shadow(2px 3px 5px white);
+}
+.hoverIcon{
+transform: scaleX(1) !important;
+position: absolute;
+font-size: 10px;
+background-color: rgb(34, 80, 248);
+border-radius: 10px;
+padding: 3px 5px;
+text-transform: capitalize;
+letter-spacing: 1px;
+font-weight: bolder;
+transition: .5s;
+left: 100%;
+white-space: nowrap;
+}
+    </style>
+</head>
+<body>
+    <aside>
+        <div class="side-head">
+          <h3>MilliSoft</h3>
+          <i class="fa-solid fa-x menu-close" onclick="Close()"></i>
+          <i class="fa-solid fa-bars menu-bar" onclick="Menu()"></i>
+        </div>
+        <div class="side-body">
+          <ul>
+            <li><span>ANA SƏHİFƏ</span> <i class="fa-solid fa-house-chimney"></i></li>
+            <li><span>HAQQIMIZDA</span><i class="fa-solid fa-file-circle-question"></i></li>
+            <li><span>XİDMƏTLƏR</span> <i class="fa-sharp fa-solid fa-gears"></i></li>
+            <li><span>PORTFEL</span> <i class="fa-solid fa-image"></i></li>
+            <li><span>KOMANDA</span> <i class="fa-solid fa-users"></i></li>
+            <li><span>ƏLAQƏ</span> <i class="fa-solid fa-envelope"></i></li>
+          </ul>
+        </div>
+      </aside>
+      <script>
+        let menuIcon=document.querySelector(".menu-bar");
+let aside=document.querySelector("aside");
+let sideBody=document.querySelector(".side-body");
+let array = document.querySelectorAll(".side-body>ul>li>span");
+let arrayIcon = document.querySelectorAll(".side-body>ul>li>i");
+console.log(array);
+function Menu() {
+  console.log("dfgdf");
+  aside.style.transform="translateX(0%)";
+  aside.style.backgroundColor="black";
+  menuIcon.style.display="none";
+  console.log();
+  array.forEach(element => {
+    element.style=" transform: scaleX(1);"
+  });
+arrayIcon.forEach(element => {
+  element.style.display="none";
+});
+}
+
+function Close() {
+  aside.style.transform="translateX(-82%)";
+  menuIcon.style.display="block";
+  aside.style.backgroundColor="";
+  array.forEach(element => {
+    element.style=" transform: scaleX(0);"
+  });
+  arrayIcon.forEach(element => {
+    element.style.display="block";
+  });
+}
+
+document.querySelectorAll("ul li i").forEach((element)=>{
+  element.addEventListener("mouseover",function () {
+    element.previousElementSibling.classList.add("hoverIcon")
+  })
+  element.addEventListener("mouseout",function () {
+    element.previousElementSibling.classList.remove("hoverIcon")
+  })
+})
+      </script>
+</body>
+</html>
